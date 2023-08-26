@@ -8,7 +8,7 @@ Please review and adhere to our Code of Conduct to ensure a respectful and inclu
 Reporting Issues
 If you come across any bugs, glitches, or unexpected behavior while using Expense Manager, please open an issue with a detailed description of the problem. Include steps to reproduce it, expected results, and any relevant information.
 
-Submitting Changes
+# Submitting Changes
 Fork the repository to your GitHub account.
 
 Clone the forked repository to your local machine:

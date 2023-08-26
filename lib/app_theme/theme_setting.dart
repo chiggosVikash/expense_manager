@@ -12,6 +12,7 @@ final darkTheme = ThemeData.dark(
 
 
 final lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(backgroundColor: Colors.deepPurple.withOpacity(.15)),
   elevatedButtonTheme: const ElevatedButtonThemeData(
     style: ButtonStyle(
       // minimumSize: MaterialStateProperty.all<Size>(Size.fromWidth(50))

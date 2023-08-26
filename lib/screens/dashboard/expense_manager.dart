@@ -1,5 +1,8 @@
+import 'package:expense_manager/databases/setup/objectbox_storage.dart';
 import 'package:expense_manager/extensions/media_query_extension.dart';
 import 'package:expense_manager/providers/dashboard_manager/dashboard_manager.dart';
+import 'package:expense_manager/screens/add_expense_screen/add_expense_screen.dart';
+import 'package:expense_manager/screens/dashboard/data_not_found_msg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/dashboard_models/monthly_expense_model.dart';
@@ -28,13 +31,8 @@ class _ExpenseManagerDashboardState extends ConsumerState<ExpenseManagerDashboar
   @override
   void initState() {
     super.initState();
-    // monthlyExpenseData = [
-    //   MonthlyExpenseModel(expenseAmount: 20000.0,month: "Apr"),
-    //   MonthlyExpenseModel(expenseAmount: 20000.0,month: "May"),
-    //   MonthlyExpenseModel(expenseAmount: 20000.0,month: "Jun"),
-    //   MonthlyExpenseModel(expenseAmount: 20000.0,month: "Jul"),
-    //   MonthlyExpenseModel(expenseAmount: 20000.0,month: "Aug"),
-    // ];
+    // ObjectBoxStore().expenseBox.removeAll();
+    // ObjectBoxStore().settingBox.removeAll();
 
   }
 
@@ -46,33 +44,52 @@ class _ExpenseManagerDashboardState extends ConsumerState<ExpenseManagerDashboar
       appBar: AppBar(
         title: const Text("Dashboard"),
       ),
-      body: Consumer(
-        builder: (context,ref,child) {
-          final dashboardData = ref.watch(dashboardManagerProvider);
-          return dashboardData.when(data: (dashboard){
-            return RefreshIndicator(
-              onRefresh: ref.read(dashboardManagerProvider.notifier).refreshPage,
-              child: ListView(
-                children: [
-                  TopThreeExpenseCategory(top3CategoriesExpenses: dashboard.top3Categories,),
-                  TodayExpenseAmtByCategoryNdSubcategory(todayExpenses: dashboard.todayExpenseCategories,),
-                  SizedBox(height: context.height*.02,),
-                  MonthlyExpenseChart(monthlyExpenseData: dashboard.monthlyExpense,),
-                  TodayNdTotalExpenseAmt(todayExpensesAmount: dashboard.todayExpenseAmount,currentMonthExpenseAmount: dashboard.currentMonthExpenseAmount,),
-                  SizedBox(height: context.height*.02,),
+      body: Stack(
+        children: [
+          Container(color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(.4),),
+          Consumer(
+            builder: (context,ref,child) {
+              final dashboardData = ref.watch(dashboardManagerProvider);
+              return dashboardData.when(data: (dashboard){
+                if(dashboard.lastAddedExpense == null){
+                  return const DataNotFound();
+                  // return Center(child: Column(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                    // const Text("You have not added any expenses Please add Atleast one data"),
+                    // ElevatedButton(onPressed: (){
+                    //   Navigator.pushNamed(context, AddExpenseScreen.routeAddress);
+                    // }, child: const Text("Add Expense")),
+                    // ElevatedButton(onPressed: (){
+                    //   ref.read(dashboardManagerProvider.notifier).refreshPage();
+                    // }, child: const Text("Refresh Page"))
+                  // ],),);
+                }
+                return RefreshIndicator(
+                  onRefresh: ref.read(dashboardManagerProvider.notifier).refreshPage,
+                  child: ListView(
+                    children: [
+                      TopThreeExpenseCategory(top3CategoriesExpenses: dashboard.top3Categories,),
+                      TodayExpenseAmtByCategoryNdSubcategory(todayExpenses: dashboard.todayExpenseCategories,),
+                      SizedBox(height: context.height*.02,),
+                      MonthlyExpenseChart(monthlyExpenseData: dashboard.monthlyExpense,),
+                      TodayNdTotalExpenseAmt(todayExpensesAmount: dashboard.todayExpenseAmount,currentMonthExpenseAmount: dashboard.currentMonthExpenseAmount,),
+                      SizedBox(height: context.height*.02,),
 
-                  LastAddedExpense(lastExpense: dashboard.lastAddedExpense,),
+                      LastAddedExpense(lastExpense: dashboard.lastAddedExpense,),
 
-                  SizedBox(height: context.height*.02,),
-                  YearlyExpenseChart(yearlyExpenseData:dashboard.yearlyExpenses,),
+                      SizedBox(height: context.height*.02,),
+                      YearlyExpenseChart(yearlyExpenseData:dashboard.yearlyExpenses,),
 
 
-                ],),
-            );
-          }, error: (e,st)=> Center(child:  Text("Error $e"),),
-              loading: ()=> const Center(child: CircularProgressIndicator(),));
+                    ],),
+                );
+              }, error: (e,st)=> Center(child:  Text("Error $e"),),
+                  loading: ()=> const Center(child: CircularProgressIndicator(),));
 
-        }
+            }
+          ),
+        ],
       ),);
   }
 }

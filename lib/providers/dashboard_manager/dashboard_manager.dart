@@ -131,6 +131,9 @@ class DashboardManager extends _$DashboardManager with DashboardQuery,LDBQuery i
   @override
   List<YearlyExpenseModel> yearlyExpenses() {
     final yearlyExpensesData =  yearlyExpensesQ();
+    if(yearlyExpensesData.isEmpty){
+      return [];
+    }
     if(yearlyExpensesData.length < 2){
       yearlyExpensesData[0].shader = _firstYearShed;
       return yearlyExpensesData;

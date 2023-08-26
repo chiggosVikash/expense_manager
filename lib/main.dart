@@ -22,6 +22,7 @@ class MyApp extends ConsumerWidget {
       builder: (context,ref,child) {
         final themeMode = ref.watch(themeManagerProvider);
         return MaterialApp(
+
           title: 'Expense Manager',
           onGenerateRoute: route.onGenerateRoute,
           debugShowCheckedModeBanner: false,
