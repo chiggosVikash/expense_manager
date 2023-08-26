@@ -1,10 +1,10 @@
 Contributing to Expense Manager
 Thank you for considering contributing to Expense Manager! We appreciate your effort in making this open-source project better. Your contributions can include code improvements, bug fixes, new features, and more. Here's how you can get involved:
 
-Code of Conduct
+# Code of Conduct
 Please review and adhere to our Code of Conduct to ensure a respectful and inclusive environment for everyone.
 
-How Can I Contribute?
+# How Can I Contribute?
 Reporting Issues
 If you come across any bugs, glitches, or unexpected behavior while using Expense Manager, please open an issue with a detailed description of the problem. Include steps to reproduce it, expected results, and any relevant information.
 
@@ -37,19 +37,21 @@ Copy code
 git push origin feature-name
 Create a Pull Request (PR) from your branch to the main repository's main branch. Ensure that you describe the changes you've made and mention any related issues.
 
-Improving Documentation
+# Improving Documentation
 If you find parts of the documentation that need clarification or if you want to enhance it, feel free to submit pull requests with your proposed changes.
 
-Code Review Process
+# Code Review Process
+
 All pull requests will be reviewed by the maintainers of the project. Feedback may be provided, and changes may be requested before the pull request is merged.
 
-Style Guidelines
+# Style Guidelines
+
 Please follow the existing code style and guidelines of the project. If you're unsure about anything, feel free to ask for clarification in your pull request.
 
-Licensing
+# Licensing
 By contributing to Expense Manager, you agree that your contributions will be licensed under the MIT License.
 
-Get in Touch
+# Get in Touch
 If you have any questions, suggestions, or need assistance, you can contact us or join our Discord community.
 
 Thank you for contributing to Expense Manager! Your contributions make a meaningful impact on the project.
