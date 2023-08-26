@@ -52,7 +52,7 @@ Please follow the existing code style and guidelines of the project. If you're u
 By contributing to Expense Manager, you agree that your contributions will be licensed under the MIT License.
 
 # Get in Touch
-If you have any questions, suggestions, or need assistance, you can contact us or join our Discord community.
+If you have any questions, suggestions, or need assistance, you can contact us on royviku336@gmail.com .
 
 Thank you for contributing to Expense Manager! Your contributions make a meaningful impact on the project.
 
