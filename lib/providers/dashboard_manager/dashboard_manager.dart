@@ -2,6 +2,7 @@
 import 'dart:ui'as ui;
 
 import 'package:expense_manager/databases/query/dashboard_query.dart';
+import 'package:expense_manager/databases/setup/objectbox_storage.dart';
 import 'package:expense_manager/extensions/date_format_extension.dart';
 import 'package:expense_manager/extensions/only_date_extension.dart';
 import 'package:expense_manager/models/dashboard_models/category_wise_expense_model.dart';
@@ -53,6 +54,7 @@ class DashboardManager extends _$DashboardManager with DashboardQuery,LDBQuery i
 
   @override
   FutureOr<DashboardModel> build(){
+    // ObjectBoxStore().settingBox.removeAll();
     return _valueInitilizer();
 
   }
@@ -130,6 +132,7 @@ class DashboardManager extends _$DashboardManager with DashboardQuery,LDBQuery i
   List<YearlyExpenseModel> yearlyExpenses() {
     final yearlyExpensesData =  yearlyExpensesQ();
     if(yearlyExpensesData.length < 2){
+      yearlyExpensesData[0].shader = _firstYearShed;
       return yearlyExpensesData;
     }
     final firstYearData = yearlyExpensesData[0];

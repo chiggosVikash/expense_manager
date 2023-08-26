@@ -1,5 +1,4 @@
 import 'package:expense_manager/extensions/size_extension.dart';
-import 'package:expense_manager/models/setting_model.dart';
 import 'package:expense_manager/providers/custom_widget_pos_provider/custom_widget_pos_provider.dart';
 import 'package:expense_manager/providers/expense_manager/expense_manager.dart';
 import 'package:expense_manager/providers/settings/setting_manager.dart';
@@ -79,6 +78,7 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
                         ref.read(customWidgetPosPProvider.notifier).findPos(globalKey: _categoryGlobalKey,type: SettingEnum.category);
                       },
                      onChanged: (data){
+                       ref.read(customWidgetPosPProvider.notifier).findPos(globalKey: _categoryGlobalKey,type: SettingEnum.category);
                        ref.read(settingManagerProvider.notifier).getSetting(settingType: SettingEnum.category.name,
                            searchKey: data);
                      },
@@ -114,6 +114,7 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
                         ref.read(customWidgetPosPProvider.notifier).findPos(globalKey: _subCategoryGlobalKey,type: SettingEnum.subCategory);
                       },
                       onChanged: (data){
+                        ref.read(customWidgetPosPProvider.notifier).findPos(globalKey: _subCategoryGlobalKey,type: SettingEnum.subCategory);
                         ref.read(settingManagerProvider.notifier).getSetting(settingType: SettingEnum.subCategory.name,
                             searchKey: data);
                       },

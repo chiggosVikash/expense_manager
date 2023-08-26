@@ -29,6 +29,9 @@ class ScreenRoute{
       case ViewExpensesScreen.routeAddress:
         return CustomRoute(page: const ViewExpensesScreen(), offset: _pageOpenDirection);
 
+      case ExpenseManagerDashboard.routeAddress:
+        return CustomRoute(page: const ExpenseManagerDashboard(), offset: _pageOpenDirection);
+
       default:
         return CustomRoute(page: Scaffold(
           body: Center(child: Text("Page not found ${settings.name}"),),

@@ -1,5 +1,6 @@
 
 
+import 'package:expense_manager/screens/dashboard/expense_manager.dart';
 import 'package:expense_manager/screens/view_expenses/expense_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +22,7 @@ class ViewExpensesScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text("Expenses"),
       actions: [
         IconButton(onPressed: (){
-          Navigator.pushNamedAndRemoveUntil(context, Homepage.routeAddress, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, ExpenseManagerDashboard.routeAddress, (route) => false);
         }, icon: const Icon(Icons.home_filled))
       ],
       ),
