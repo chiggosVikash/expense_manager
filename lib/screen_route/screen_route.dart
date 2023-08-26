@@ -8,6 +8,7 @@ import 'package:expense_manager/screens/splash_screen/splash_screen.dart';
 import 'package:expense_manager/screens/view_expenses/view_expenses.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/dashboard/expense_manager.dart';
 import '../screens/homepage/homepage.dart';
 
 class ScreenRoute{
@@ -16,7 +17,7 @@ class ScreenRoute{
   Route<dynamic> onGenerateRoute(RouteSettings settings){
     switch(settings.name){
       case "/":
-        return CustomRoute(page: const Homepage(), offset: _pageOpenDirection);
+        return CustomRoute(page: const ExpenseManagerDashboard(), offset: _pageOpenDirection);
       case Homepage.routeAddress:
         return CustomRoute(page: const Homepage(), offset: _pageOpenDirection);
       case AddExpenseScreen.routeAddress:

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class ExpenseAmtWidget extends StatelessWidget {
   final BoxConstraints constraints;
-  const ExpenseAmtWidget({super.key,required this.constraints});
+  final double _amount;
+  const ExpenseAmtWidget({super.key,required this.constraints,
+  required double amount
+  }):_amount = amount;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +19,8 @@ class ExpenseAmtWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: context.height*.003,horizontal: constraints.biggest.width*.02,),
         margin: EdgeInsets.only(right: context.width*.04),
         child: Text.rich(TextSpan(children: [
-          TextSpan(text: "\u20B9 "),
-          TextSpan(text: "2000.0")
+          const TextSpan(text: "\u20B9 "),
+          TextSpan(text: "$_amount")
         ])),
       ),
     )

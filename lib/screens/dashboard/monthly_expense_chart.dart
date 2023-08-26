@@ -2,6 +2,7 @@ import 'package:expense_manager/extensions/media_query_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import '../../models/dashboard_models/monthly_expense_model.dart';
 import 'model.dart';
 
 class MonthlyExpenseChart extends StatelessWidget {
@@ -42,7 +43,7 @@ class MonthlyExpenseChart extends StatelessWidget {
                 markerSettings: const  MarkerSettings(isVisible: true,width: 5,height: 5,shape: DataMarkerType.diamond),
                 dataSource: monthlyExpenseData ,
                 xValueMapper: (MonthlyExpenseModel val,_) => val.month,
-                yValueMapper: (MonthlyExpenseModel val,_) => val.expenseAmount),
+                yValueMapper: (MonthlyExpenseModel val,_) => val.amount),
             // LineSeries(
             //     markerSettings: const  MarkerSettings(isVisible: true,width: 5,height: 5,shape: DataMarkerType.circle),
             //     dataSource: monthlyDuesNdBillingAmtData ,

@@ -1,9 +1,13 @@
 import 'package:expense_manager/extensions/media_query_extension.dart';
+import 'package:expense_manager/models/dashboard_models/category_wise_expense_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TodayExpenseAmtByCategoryNdSubcategory extends StatelessWidget {
-  const TodayExpenseAmtByCategoryNdSubcategory({super.key});
+  final List<CategoryWiseExpenseModel> _todayExpenses;
+  const TodayExpenseAmtByCategoryNdSubcategory({super.key,required List<CategoryWiseExpenseModel> todayExpenses})
+  :_todayExpenses = todayExpenses;
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class TodayExpenseAmtByCategoryNdSubcategory extends StatelessWidget {
        margin: EdgeInsets.symmetric(horizontal: context.height*.02),
        child: SingleChildScrollView(scrollDirection: Axis.horizontal,
          child: Wrap(spacing: context.width*.03,
-           children: List.generate(4, (index) {
+           children: List.generate(_todayExpenses.length, (index) {
            return Container(width: context.width*.95/3,
              decoration: BoxDecoration(
                borderRadius: BorderRadius.circular(15),
@@ -81,10 +85,10 @@ class TodayExpenseAmtByCategoryNdSubcategory extends StatelessWidget {
                  builder: (context,constraints) {
                    return Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
                      Text.rich(TextSpan(children: [
-                       TextSpan(text: "\u20B9 "),
-                       TextSpan(text: "${index+2}000.0")
+                       const TextSpan(text: "\u20B9 "),
+                       TextSpan(text: "${_todayExpenses[index].amount}")
                      ])),
-                     Text("Category Name"),
+                     Text(_todayExpenses[index].category),
 
                    ],);
                  }

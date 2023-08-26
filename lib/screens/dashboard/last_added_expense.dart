@@ -1,11 +1,13 @@
 import 'package:expense_manager/extensions/media_query_extension.dart';
+import 'package:expense_manager/models/expense_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'amt_widget.dart';
 
 class LastAddedExpense extends StatelessWidget {
-  const LastAddedExpense({super.key});
+  final ExpenseModel? _lastAddedExpense;
+  const LastAddedExpense({super.key,required ExpenseModel? lastExpense}):_lastAddedExpense = lastExpense;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,10 @@ class LastAddedExpense extends StatelessWidget {
         ),),
       ),
 
-      Container(
+      _lastAddedExpense == null ?
+        const Center(child: Text("You have not done any Expense "),)
+       :
+        Container(
           decoration: BoxDecoration(color: Theme.of(context).canvasColor,
               boxShadow: [
                 const BoxShadow(color: Colors.indigo,offset: Offset(-4, 0)),
@@ -37,20 +42,20 @@ class LastAddedExpense extends StatelessWidget {
                         child: Column(children: [
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                             Icon(Icons.auto_mode,size: context.height*.015,color: Theme.of(context).colorScheme.surfaceTint,),
-                            SizedBox(width: constraints.biggest.width*.94,child: Text("Sub-category name",
+                            SizedBox(width: constraints.biggest.width*.94,child: Text(_lastAddedExpense!.subCategory.toUpperCase(),
                               style: GoogleFonts.alegreyaSansSc(
                                   fontSize: ((context.height+constraints.biggest.width)*context.aspectRatio)*.032
                               ),),)
                           ],),
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                             Icon(Icons.category_rounded,size: context.height*.015,color: Theme.of(context).colorScheme.inversePrimary,),
-                            SizedBox(width: constraints.biggest.width*.94,child: Text("Category name",
+                            SizedBox(width: constraints.biggest.width*.94,child: Text(_lastAddedExpense!.category.toUpperCase(),
                               style: GoogleFonts.abyssinicaSil(
                                   color: Theme.of(context).textTheme.bodySmall!.color,
                                   fontSize: ((context.height+constraints.biggest.width)*context.aspectRatio)*.027
                               ),),)
                           ],),
-                          ExpenseAmtWidget(constraints: constraints)
+                          ExpenseAmtWidget(constraints: constraints,amount: _lastAddedExpense!.amount,)
 
 
 

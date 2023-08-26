@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'model.dart';
+import '../../models/dashboard_models/yearly_expense_model.dart';
 
 class YearlyExpenseChart extends StatelessWidget {
   final List<YearlyExpenseModel> yearlyExpenseData;

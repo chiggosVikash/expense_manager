@@ -2,10 +2,12 @@ import 'package:expense_manager/extensions/media_query_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../models/dashboard_models/category_wise_expense_model.dart';
 import 'amt_widget.dart';
 
 class TopThreeExpenseCategory extends StatelessWidget {
-  const TopThreeExpenseCategory({super.key});
+  final List<CategoryWiseExpenseModel> _top3Categories;
+  const TopThreeExpenseCategory({super.key,required List<CategoryWiseExpenseModel> top3CategoriesExpenses}):_top3Categories = top3CategoriesExpenses;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class TopThreeExpenseCategory extends StatelessWidget {
         ),),
       ),
 
-      Column(children: List.generate(3, (index) {
+      Column(children: List.generate(_top3Categories.length, (index) {
         return Container(width: context.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
@@ -41,12 +43,12 @@ class TopThreeExpenseCategory extends StatelessWidget {
                   children: [
                     Icon(Icons.category_rounded,size: constraints.biggest.width*.03,color: Theme.of(context).colorScheme.surfaceTint,),
                     SizedBox(width: constraints.biggest.width*.95,
-                        child: Text("Category Name",style: GoogleFonts.aBeeZee(
+                        child: Text(_top3Categories[index].category,style: GoogleFonts.aBeeZee(
                           fontSize: ((constraints.biggest.width+context.height)*context.aspectRatio)*.027
                         ),)),
                   ],
                 ),
-                  ExpenseAmtWidget(constraints: constraints)
+                  ExpenseAmtWidget(constraints: constraints,amount: _top3Categories[index].amount,)
                   
                           ],);
               }
