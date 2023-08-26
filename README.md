@@ -4,12 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
-Expense Manager - Track and Analyze Your Expenses
+# Expense Manager - Track and Analyze Your Expenses
 Expense Manager is an open-source mobile application developed using Flutter that helps you efficiently track and analyze your expenses. 
 Whether you're managing personal finances or keeping tabs on business expenditures, Expense Manager has got you covered. 
 This README file will guide you through the installation process, features, and how to contribute to the project.
 
-Expense Manager
+# Expense Manager
 
 Table of Contents
 Features
@@ -24,7 +24,7 @@ Record Expenses: Easily input your expenses with details like amount, category, 
 Expense Categories: Categorize your expenses into predefined or custom categories for better organization.
 Analytics Dashboard: View comprehensive graphs and charts that provide insights into your spending habits over time.
 
-Installation
+# Installation
 Follow these steps to set up and run Expense Manager on your local machine:
 
 1. Prerequisites:
@@ -41,10 +41,10 @@ Git: Make sure you have Git installed.
 
 The app should now be running on your connected device or emulator.
 
-Usage
+# Usage
 Expense Manager's intuitive user interface makes it simple to start tracking and managing your expenses:
 
-Add an Expense:
+# Add an Expense:
 
 Tap on the "+" button to add a new expense.
 Fill in the expense details, including amount, category, date, and optional description.
